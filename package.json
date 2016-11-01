@@ -1,0 +1,24 @@
+{
+  "name": "xml-author-matrix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augusto-altman/XML-Author-Matrix.git"
+  },
+  "author": "Augusto David Altman Quaranta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/augusto-altman/XML-Author-Matrix/issues"
+  },
+  "homepage": "https://github.com/augusto-altman/XML-Author-Matrix#readme",
+  "dependencies": {
+    "install": "^0.8.2",
+    "npm": "^3.10.9",
+    "xml2js": "^0.4.17"
+  }
+}
