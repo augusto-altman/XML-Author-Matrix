@@ -7,24 +7,22 @@ parseString(xml, function (err, result) {
 	var articles = result.MedlineCitationSet.Article;
 	var authors = {};
 	var artcilesByAuthors = {};
-	var currentAuthorIndex = 0;
 	
     articles.forEach(function(article) {
 		artcilesByAuthors[article.ArticleTitle[0]] = [];
 		article.AuthorList[0].Author.forEach(function(author) {
-			var authorKey = author.LastName[0]+author.ForeName[0]+author.Initials[0];
+			var authorKey = author.LastName[0] + " " + author.ForeName[0];
 			if(!authors.hasOwnProperty(authorKey)) {
 				authors[authorKey] = {
 					lastName: author.LastName[0],
-					name: author.ForeName[0],
-					index: currentAuthorIndex++
+					name: author.ForeName[0]
 				};
 			}
-			artcilesByAuthors[article.ArticleTitle[0]].push(authors[authorKey]);
+			artcilesByAuthors[article.ArticleTitle[0]].push(authorKey);
 		});
 	});
 	
-	var resultantMatrix = initializeMatrix(currentAuthorIndex);
+	var resultantMatrix = initializeMatrix(authors);
 	polluteMatrix(resultantMatrix, artcilesByAuthors);
 	prettyPrintMatrix(resultantMatrix, authors);
 });
@@ -36,10 +34,10 @@ function prettyPrintMatrix(matrix, authors) {
 function polluteMatrix(matrix, artciles) {
 	for(var articleName in artciles) {
 		for(var i = 0; i < artciles[articleName].length; i++) {
-			var firstAuthorIndexInResultanMatrix = artciles[articleName][i].index;
+			var firstAuthorIndexInResultanMatrix = artciles[articleName][i];
 			matrix[firstAuthorIndexInResultanMatrix][firstAuthorIndexInResultanMatrix]++;
 			for(var j = i+1; j < artciles[articleName].length; j++) {
-				var secondAuthorIndexInResultanMatrix = artciles[articleName][j].index
+				var secondAuthorIndexInResultanMatrix = artciles[articleName][j]
 				matrix[firstAuthorIndexInResultanMatrix][secondAuthorIndexInResultanMatrix]++;
 				matrix[secondAuthorIndexInResultanMatrix][firstAuthorIndexInResultanMatrix]++;
 			}
@@ -47,11 +45,14 @@ function polluteMatrix(matrix, artciles) {
 	}
 }
 
-function initializeMatrix(authorsAmount) {
-	var matrix = [];
+function initializeMatrix(authors) {
+	var matrix = {};
 	
-	for(var i = 0; i < authorsAmount; i++) {
-		matrix.push(Array.apply(null, Array(authorsAmount)).map(Number.prototype.valueOf,0));
+	for(var author in authors) {
+		matrix[author] = {};
+		for(var co in authors) {
+			matrix[author][co] = 0;
+		}
 	}
 	
 	return matrix;
