@@ -10,6 +10,10 @@ To run the test: (you will need nodejs)
 
 **Note 2**: This solution is not defensive. The are no checks regarding data/input format. This was an implementation decision in order to get a solution faster considering the time constrains.
 
+**Note 3**: Since the assignment only said "You must output your result to the command line as textual representation" I considered that the most "pretty" way of printing it was as a key value pairs. Actually I'm printing just plain-old javascript objects where each key is an author and the value could be another object or the amount of co-authored articles.
+
+**Note 4**: On the mail you sent you specify that I can use whatever language/technology I want. I choosed nodejs because it's very agile and I've experience in coding scripts with it.
+
 
 ## Question "b"
 First of all I would collect the most accurate problem definition I could. To design a proper test suite I should have at least all the valid input patterns and the the expected outputs. I would need to understand waht is the purpose of the code I'm testing in order to understand which is its value and what is the core behaviour that it should demonstrate.
