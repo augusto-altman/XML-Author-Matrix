@@ -12,16 +12,18 @@ To run the test: (you will need nodejs)
 
 
 ## Question "b"
-First of all I would collect the most accurate problem definition I could. To design a proper test suite I should have at least all the valid input patterns and the the expected outputs. I would need to understand waht is the purpose of the code I'm testing in order to understand which is its value and what is the core behaviours that it should demonstrate.
+First of all I would collect the most accurate problem definition I could. To design a proper test suite I should have at least all the valid input patterns and the the expected outputs. I would need to understand waht is the purpose of the code I'm testing in order to understand which is its value and what is the core behaviour that it should demonstrate.
 
 A minimal test suite should include tests for:
 * Running it with a non-XML file.
 * Running it with an XML file with no records.
-* Running it with an XML containing some valid records - Basic functionallity.
+* Running it with an XML containing some valid records (several articles with several authors) - Basic functionallity.
+* Running it with an XML containing some valid records (one article with several authors) - Basic functionallity.
+* Running it with an XML containing some valid records (several articles with one author) - Basic functionallity.
 * Running it with an XML containing only invalid records - Negative case.
 * Running it with an XML containing some invalid records. The definitions I would collect shluld specify what to do with the invalid records.
 
-Of course I would automate my tests and run them on some continous testing pipeline everytime a commit is done in order to ensure regression testing to be runned on every single change. I'm a big fan of BDD so I would write my test using behave and run it with [cucumber](https://cucumber.io/).
+Of course I would automate my tests and run them on some continous testing pipeline everytime a commit is done in order to ensure regression testing to be runned on every single change. I'm a big fan of BDD so I would write my test using behave and run them with [cucumber](https://cucumber.io/).
 
 
 ## Question "c"
